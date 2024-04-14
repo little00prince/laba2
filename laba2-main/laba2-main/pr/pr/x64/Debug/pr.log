@@ -1,0 +1,10 @@
+﻿  pr.cpp
+C:\Users\anton\Downloads\laba2-main\laba2-main\pr\pr\pr.cpp(166,26): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\anton\Downloads\laba2-main\laba2-main\pr\pr\pr.cpp(167,30): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\anton\Downloads\laba2-main\laba2-main\pr\pr\pr.cpp(171,43): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\anton\Downloads\laba2-main\laba2-main\pr\pr\pr.cpp(172,43): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\anton\Downloads\laba2-main\laba2-main\pr\pr\pr.cpp(192,26): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\anton\Downloads\laba2-main\laba2-main\pr\pr\pr.cpp(193,30): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\anton\Downloads\laba2-main\laba2-main\pr\pr\pr.cpp(197,43): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\anton\Downloads\laba2-main\laba2-main\pr\pr\pr.cpp(198,43): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+  pr.vcxproj -> C:\Users\anton\Downloads\laba2-main\laba2-main\pr\x64\Debug\pr.exe

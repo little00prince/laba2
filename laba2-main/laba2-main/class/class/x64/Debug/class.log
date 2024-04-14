@@ -1,0 +1,6 @@
+﻿  class.cpp
+C:\Users\anton\Downloads\laba2-main\laba2-main\class\class.cpp(86,21): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\anton\Downloads\laba2-main\laba2-main\class\class.cpp(87,27): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\anton\Downloads\laba2-main\laba2-main\class\class.cpp(111,35): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\anton\Downloads\laba2-main\laba2-main\class\class.cpp(112,37): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\anton\Downloads\laba2-main\laba2-main\class\class.cpp(153,26): error C2065: b: необъявленный идентификатор

@@ -1,0 +1,250 @@
+﻿#define _CRT_SECURE_NO_WARNINGS
+#define N 3
+#include <iostream>
+
+struct object
+{
+    float area;
+    float volume;
+    int type;
+    union {
+        struct {
+            float a;
+            float diagonal;
+        }cube;
+        struct {
+            float r;
+            float d;
+        }ball;
+        struct {
+            float b;
+            int view;
+        }tetrapyramid;
+    }figure;
+};
+
+object example, * second = NULL;
+extern int g = 0;
+
+int block_int(int min, int max);
+float block_float();
+void input(int type, float sides[]);
+void work();
+void output();
+
+int main()
+{
+    int type, min, max, i;
+    float sides[N];
+    setlocale(LC_ALL, "Rus");
+    second = (object*)malloc(sizeof(object));
+    do {
+        printf("\n1-куб\n2-шар\n3-правильный тетраид\nВыберите фигуру:");
+        min = 1; max = 3;
+        type = block_int(min, max);
+        i = 0;
+        switch (type)
+        {
+        case 1:
+            printf("Длина стороны куба:");
+            sides[i] = block_float();
+            break;
+        case 2:
+            printf("Радиус шара:");
+            sides[i] = block_float();
+            break;
+        case 3:
+            printf("Длина стороны правильного тетраида:");
+            sides[i] = block_float();
+            break;
+        default:;
+        }
+        input(type, sides);
+        work();
+        output();
+        g++;
+    } while (g < 2);
+    free(second);
+}
+//Защита на целые числа
+int block_int(int min, int max)
+{
+    int type, f = 1;
+    do {
+        if (f != 1)
+        {
+            printf("Такого варианта нет. Попробуйте ещё раз: ");
+        }
+        while (scanf("%d", &type) != 1)
+        {
+            while (getchar() != '\n');
+            printf("Ошибка. Попробуйте ещё раз: ");
+        }
+        f = 0;
+        while (getchar() != '\n');
+    } while (type<min || type>max);
+    printf("\n");
+    return type;
+}
+//Защита на дробные числа
+float block_float()
+{
+    int f = 1;
+    float e;
+    do {
+        if (f != 1)
+        {
+            printf("Такого варианта нет. Попробуйте ещё раз: ");
+        }
+        while (scanf("%f", &e) != 1)
+        {
+            while (getchar() != '\n');
+            printf("Ошибка. Попробуйте ещё раз: ");
+        }
+        f = 0;
+        while (getchar() != '\n');
+    } while (e <= 0);
+    printf("\n");
+    return e;
+}
+//Ввод в структуру
+void input(int type, float sides[])
+{
+    int i = 0;
+    if (g == 0)
+    {
+        example.type = type;
+        switch (type)
+        {
+        case 1:
+            example.figure.cube.a = sides[i];
+            break;
+        case 2:
+            example.figure.ball.r = sides[i];
+            break;
+        case 3:
+            example.figure.tetrapyramid.b = sides[i];
+            break;
+        default:;
+        }
+    }
+    else
+    {
+        (*second).type = type;
+        switch (type)
+        {
+        case 1:
+            (*second).figure.cube.a = sides[i];
+            break;
+        case 2:
+            (*second).figure.ball.r = sides[i];
+            break;
+        case 3:
+            (*second).figure.tetrapyramid.b = sides[i];
+            break;
+        default:;
+        }
+    }
+}
+//Обработка данных
+void work()
+{
+    float s, v, a[N];
+    if (g == 0)
+    {
+        switch (example.type)
+        {
+        case 1:
+            a[0] = example.figure.cube.a;
+            example.figure.cube.diagonal = sqrtf(3) * a[0];
+            s = powf(a[0], 2) * 6;
+            v = powf(a[0], 3);
+            break;
+        case 2:
+            a[0] = example.figure.ball.r;
+            example.figure.ball.d = a[0] * 2;
+            s = 4 * 3.14 * pow(a[0], 2);
+            v = 4 / 3 * 3.14 * pow(a[0], 3);
+            break;
+        case 3:
+            a[0] = example.figure.tetrapyramid.b;
+            s = (sqrtf(3) * pow(a[0], 2)) / 4;
+            v = (pow(a[0], 3) * sqrtf(2)) / 12;
+            break;
+        default:;
+        }
+        example.area = s;
+        example.volume = v;
+    }
+    else
+    {
+        switch ((*second).type)
+        {
+        case 1:
+            a[0] = (*second).figure.cube.a;
+            (*second).figure.cube.diagonal = sqrtf(3) * a[0];
+            s = powf(a[0], 2) * 6;
+            v = powf(a[0], 3);
+            break;
+        case 2:
+            a[0] = (*second).figure.ball.r;
+            (*second).figure.ball.d = a[0] * 2;
+            s = 4 * 3.14 * pow(a[0], 2);
+            v = 4 / 3 * 3.14 * pow(a[0], 3);
+            break;
+        case 3:
+            a[0] = (*second).figure.tetrapyramid.b;
+            s = (sqrtf(3) * pow(a[0], 2)) / 4;
+            v = (pow(a[0], 3) * sqrtf(2)) / 12;
+            break;
+        default:;
+        }
+        (*second).area = s;
+        (*second).volume = v;
+    }
+}
+//Вывод структуры
+void output()
+{
+    printf("Фигура: ");
+    if (g == 0)
+    {
+        switch (example.type)
+        {
+        case 1:
+            printf("куб");
+            printf("\nДиагональ: %f", example.figure.cube.diagonal);
+            break;
+        case 2:
+            printf("шар");
+            printf("\nДиаметр: %f", example.figure.ball.d);
+            break;
+        case 3:
+            printf("правильный тетраид");
+            break;
+        default:;
+        }
+        printf("\nПлощадь: %f", example.area);
+        printf("\nОбъем: %f\n", example.volume);
+    }
+    else
+    {
+        switch ((*second).type)
+        {
+        case 1:
+            printf("куб");
+            printf("\nДиагональ: %f", (*second).figure.cube.diagonal);
+            break;
+        case 2:
+            printf("шар");
+            printf("\nДиаметр: %f", (*second).figure.ball.d);
+            break;
+        case 3:
+            printf("правильный тетраид");
+            break;
+        default:;
+        }
+        printf("\nПлощадь: %f", (*second).area);
+        printf("\nОбъем: %f\n", (*second).volume);
+    }
+}
