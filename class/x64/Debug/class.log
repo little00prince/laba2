@@ -1,4 +1,0 @@
-﻿  class.cpp
-C:\Users\arent\source\repos\laba2prog\class\class.cpp(86,17): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\arent\source\repos\laba2prog\class\class.cpp(87,26): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-  class.vcxproj -> C:\Users\arent\source\repos\laba2prog\class\x64\Debug\class.exe
