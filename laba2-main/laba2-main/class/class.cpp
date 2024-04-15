@@ -112,8 +112,8 @@ void tetrapyramid::work_tetrapyramid()
     volume = (pow(b, 3) * sqrtf(2)) / 12;
 }
 
-int block_int(int min, int max);
-float block_float();
+int block_i(int min, int max);
+float block_f();
 
 int main()
 {
@@ -129,27 +129,27 @@ int main()
     j = 0;
     //Полный цикл программы
     do {
-        printf("\n1-куб\n2-шар\n3-правильный тетраид\nВыберите фигуру:");
+        printf("\n1-Куб\n2-Шар\n3-Правильный тетраид\n--------------------\nВыберите фигуру:");
         min = 1; max = 3;
-        type = block_int(min, max);
+        type = block_i(min, max);
         //Ввод и обработка
         switch (type)
         {
         case 1:
             printf("Длина стороны куба:");
-            e = block_float();
+            e = block_f();
             (one + j)->set_a(e);
             (one + j)->work_cube();
             break;
         case 2:
             printf("Радиус шара:");
-            e = block_float();
+            e = block_f();
             two->set_r(e);
             two->work_ball();
             break;
         case 3:
             printf("Длина стороны правильного тетраида:");
-            e = block_float();
+            e = block_f();
             three->set_b(e);
             three->work_tetrapyramid();
             break;
@@ -161,7 +161,7 @@ int main()
         switch (type)
         {
         case 1:
-            printf("куб");
+            printf("Куб");
             e = (one + j)->get_diagonal();
             printf("\nДиагональ: %f", e);
             s = (one + j)->get_area();
@@ -169,14 +169,14 @@ int main()
             j++;
             break;
         case 2:
-            printf("шар");
+            printf("Шар");
             e = two->get_d();
             printf("\nДиаметр: %f", e);
             s = two->get_area();
             p = two->get_volume();
             break;
         case 3:
-            printf("правильный тетраид");
+            printf("Правильный тетраид");
             s = three->get_area();
             p = three->get_volume();
             break;
@@ -191,7 +191,7 @@ int main()
     delete three;
 }
 //Защита на целые числа
-int block_int(int min, int max)
+int block_i(int min, int max)
 {
     int type, f = 1;
     do {
@@ -211,7 +211,7 @@ int block_int(int min, int max)
     return type;
 }
 //Защита на дробные числа
-float block_float()
+float block_f()
 {
     int f = 1;
     float e;
